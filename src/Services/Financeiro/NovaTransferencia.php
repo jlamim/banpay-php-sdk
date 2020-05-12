@@ -21,7 +21,7 @@ class NovaTransferencia
 
         $resposta = new Resposta;
         $resposta->setTransacao($arr['transacao']);
-        $resposta->setSucesso($arr['sucesso']);
+        $resposta->setStatus($arr['sucesso']);
         $resposta->setMensagem($arr['mensagem']);
 
         return $resposta;

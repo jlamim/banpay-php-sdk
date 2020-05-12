@@ -5,8 +5,7 @@ namespace BanPay\Services\Financeiro;
 class Transferencia
 {
     private $contaDestino;
-    private $valor;
-    private $idTransferencia;
+    private $valor;    
 
     /**
      * Get the value of beneficiario
@@ -44,26 +43,6 @@ class Transferencia
     public function setValor($valor)
     {
         $this->valor = $valor;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of idTransferencia
-     */
-    public function getIdTransferencia()
-    {
-        return $this->idTransferencia;
-    }
-
-    /**
-     * Set the value of idTransferencia
-     *
-     * @return  self
-     */
-    public function setIdTransferencia($idTransferencia)
-    {
-        $this->idTransferencia = $idTransferencia;
 
         return $this;
     }

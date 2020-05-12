@@ -5,7 +5,7 @@ namespace BanPay\Services\Financeiro;
 class Resposta
 {
     private $transacao;
-    private $sucesso;
+    private $status;
     private $mensagem;
 
     /**
@@ -31,19 +31,19 @@ class Resposta
     /**
      * Get the value of sucesso
      */
-    public function getSucesso()
+    public function getStatus()
     {
-        return $this->sucesso;
+        return $this->status;
     }
 
     /**
-     * Set the value of sucesso
+     * Set the value of status
      *
      * @return  self
      */
-    public function setSucesso($sucesso)
+    public function setStatus($status)
     {
-        $this->sucesso = $sucesso;
+        $this->status = $status;
 
         return $this;
     }

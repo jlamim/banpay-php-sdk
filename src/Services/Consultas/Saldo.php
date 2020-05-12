@@ -10,18 +10,18 @@ use BanPay\Exceptions\BanPayException;
 class Saldo
 {
     private $usuario;
-    private $valorDisponivel;
+    private $saldoDisponivel;
 
     public static function get(Cliente $cliente)
     {
 
         $response = self::getResponse($cliente);
 
-        $arr = \json_decode($response->getBody(), true)['Dados'];
+        $arr = \json_decode($response->getBody(), true)['dados'];
 
         $saldo = new Saldo;
         $saldo->setUsuario($arr['usuario']);
-        $saldo->setValorDisponivel($arr['saldo_disponivel']);
+        $saldo->setSaldoDisponivel($arr['saldo']);
 
         return $saldo;
     }
@@ -67,11 +67,11 @@ class Saldo
     }
 
     /**
-     * Get the value of valorDisponivel
+     * Get the value of saldoDisponivel
      */
-    public function getValorDisponivel()
+    public function getSaldoDisponivel()
     {
-        return $this->valorDisponivel;
+        return $this->saldoDisponivel;
     }
 
     /**
@@ -79,9 +79,9 @@ class Saldo
      *
      * @return  self
      */
-    public function setValorDisponivel($valorDisponivel)
+    public function setSaldoDisponivel($saldoDisponivel)
     {
-        $this->valorDisponivel = $valorDisponivel;
+        $this->saldoDisponivel = $saldoDisponivel;
 
         return $this;
     }
