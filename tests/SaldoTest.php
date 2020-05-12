@@ -10,25 +10,26 @@ class SaldoTest extends TestCase
 {
     public function testSaldo()
     {
-        $env_token = \getenv('TOKEN');
-        $env_usuario = \getenv('SEU_USUARIO');
+        $envToken = \getenv('TOKEN');
+        $envUsuario = \getenv('SEU_USUARIO');
 
         $cliente = new Cliente;
-        $cliente->setTokenConsulta($env_token);
+        $cliente->setToken($envToken);
 
         $saldo = Saldo::get($cliente);
 
-        $this->assertEquals($saldo->getUsuario(), $env_usuario);
+        $this->assertEquals($saldo->getUsuario(), $envUsuario);
     }
 
     public function testSaldoWithException()
     {
         $this->expectException(BanPayException::class);
-        $env_token = \getenv('TOKENx');
 
+        $envToken = \getenv('TOKEN')."x";
         $cliente = new Cliente;
-        $cliente->setToken($env_token);
+        $cliente->setToken($envToken);
 
         Saldo::get($cliente);
+
     }
 }

@@ -10,29 +10,28 @@ use BanPay\Exceptions\BanPayException;
 class TransferenciaTest extends TestCase
 {
 
-    public function testNovaTransferencia()
+    public function testNovaTransferenciaAssertTrue()
     {
-        $env_token = \getenv('TOKEN');
+        $envToken = \getenv('TOKEN');
         $cliente = new Cliente;
-        $cliente->setToken($env_token);
+        $cliente->setToken($envToken);
         $transferencia = new Transferencia;
-        $transferencia->setContaDestino('user@test.com');
+        $transferencia->setContaDestino('contato@jonathanlamim.com.br');
         $transferencia->setValor(1);
-        $transferencia->setIdTransferencia('test');
         $novaTransferencia = new NovaTransferencia;
-        $novaTransferencia->executar($cliente,$transferencia);
+        $retorno = $novaTransferencia->executar($cliente, $transferencia);
+        $this->assertTrue($retorno->getStatus());
     }
 
-    public function testNovaTransferenciaWithException()
+    public function testNovaTransferenciaAssertFalseWithException()
     {
         $this->expectException(BanPayException::class);
-        $env_token = \getenv('TOKENx');
+        $envToken = \getenv('TOKEN');
         $cliente = new Cliente;
-        $cliente->setToken($env_token);
+        $cliente->setToken($envToken);
         $transferencia = new Transferencia;
-        $transferencia->setContaDestino('user@test.com');
+        $transferencia->setContaDestino('test@test.com');
         $transferencia->setValor(1);
-        $transferencia->setIdTransferencia('test');
         $novaTransferencia = new NovaTransferencia;
         $novaTransferencia->executar($cliente, $transferencia);
     }

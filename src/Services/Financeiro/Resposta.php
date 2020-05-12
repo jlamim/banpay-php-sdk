@@ -4,16 +4,16 @@ namespace BanPay\Services\Financeiro;
 
 class Resposta
 {
-    private $transacao;
+    private $hashTransacao;
     private $status;
     private $mensagem;
 
     /**
      * Get the value of transacao
      */
-    public function getTransacao()
+    public function getHashTransacao()
     {
-        return $this->transacao;
+        return $this->hashTransacao;
     }
 
     /**
@@ -21,9 +21,9 @@ class Resposta
      *
      * @return  self
      */
-    public function setTransacao($transacao)
+    public function setHashTransacao($hashTransacao)
     {
-        $this->transacao = $transacao;
+        $this->hashTransacao = $hashTransacao;
 
         return $this;
     }

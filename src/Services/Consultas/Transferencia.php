@@ -10,6 +10,7 @@ use Carbon\Carbon;
 
 class Transferencia
 {
+    private $status;
     private $data;
     private $dataCarbon;
     private $valor;
@@ -27,8 +28,10 @@ class Transferencia
         $response = self::getResponse($cliente, $codigo);
 
         $arr = \json_decode($response->getBody(), true)['dados'];
+        $status = \json_decode($response->getBody(), true)['status'];
 
         $transferencia = new Transferencia;
+        $transferencia->setStatus($status);
         $transferencia->setData($arr['data']);
         $transferencia->setValor($arr['valor']);
         $transferencia->setOrigem($arr['origem']);
@@ -50,7 +53,9 @@ class Transferencia
             'headers' => [
                 'Content-Type' => 'application/json',
                 'chaveAPI' => $cliente->getToken()
-            ]
+            ],
+            'verify' => false,
+            'http_errors' => false
         ]);
 
         $arr = \json_decode($response->getBody(), true);
@@ -60,6 +65,26 @@ class Transferencia
         }
 
         return $response;
+    }
+
+    /**
+     * Get the value of status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     *
+     * @return  self
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
     }
 
     /**

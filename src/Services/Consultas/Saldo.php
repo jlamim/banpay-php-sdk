@@ -34,7 +34,9 @@ class Saldo
             'headers' => [
                 'Content-Type' => 'application/json',
                 'chaveAPI'     => $cliente->getToken()
-            ]
+            ],
+            'verify' => false,
+            'http_errors' => false
         ]);
 
         $arr = \json_decode($response->getBody(), true);

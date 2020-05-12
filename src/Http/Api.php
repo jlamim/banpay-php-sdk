@@ -17,7 +17,6 @@ class Api
     {
 
         $client = new Client([
-            // Base URI is used with relative requests
             'base_uri' => Endpoint::BASE_URL,
         ]);
 

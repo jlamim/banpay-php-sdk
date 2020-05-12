@@ -11,16 +11,16 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": ">=7.1.8",
-        "guzzlehttp/guzzle": "~6.0",
+        "php": ">=5.6",
+        "guzzlehttp/guzzle": "^6.0",
         "nesbot/carbon": "^2.26"
     },
     "require-dev": {
-        "phpunit/phpunit": "8.4"
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
-            "BankOn\\": "src/"
+            "BanPay\\": "src/"
         }
     },
     "autoload-dev": {

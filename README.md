@@ -15,7 +15,7 @@ NÃO É uma biblioteca oficial, porém a considero funcional, pois sempre adicio
 
 ## Documentação da API
 
-A documentação oficial da API pode ser encontrada em <https://banpay.com.br/api.>
+A documentação oficial da API pode ser encontrada em <https://banpay.com.br/api>.
 
 ## Instalação Via Composer
 
@@ -116,6 +116,6 @@ try{
 
 Para verificar a transferência e obter mais detalhes sobre ela você pode utilizar o recurso de "Consulta a Transação" disponível na API e com suporte nessa biblioteca.
 
-### Consulta a Usuário ###
+### Consulta a Cliente ###
 
 EM BREVE!
