@@ -1,5 +1,14 @@
 # BanPay PHP SDK
 
+[![Build Status](https://travis-ci.org/jlamim/banpay-php-sdk.svg?branch=master)](https://travis-ci.org/jlamim/banpay-php-sdk)
+[![Coverage Status](https://coveralls.io/repos/github/jlamim/banpay-php-sdk/badge.svg?branch=develop)](https://coveralls.io/github/jlamim/banpay-php-sdk?branch=master)
+[![Downloads](https://poser.pugx.org/jlamim/banpay-php-sdk/downloads)](https://packagist.org/packages/jlamim/banpay-php-sdk)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/jlamim/banpay-php-sdk)](https://packagist.org/packages/jlamim/banpay-php-sdk)
+[![GitHub stars](https://img.shields.io/github/stars/jlamim/banpay-php-sdk)](https://packagist.org/packages/jlamim/banpay-php-sdk)
+[![GitHub license](https://img.shields.io/github/license/jlamim/banpay-php-sdk)](https://github.com/jlamim/banpay-php-sdk/blob/develop/license.txt)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jlamim/banpay-php-sdk/pulls)
+<br>
+
 Essa biblioteca permite você se conectar com a API do BanPay através do seu sistema.
 
 NÃO É uma biblioteca oficial, porém a considero funcional, pois sempre adiciono novas funcionalidades conforme a API evolui.
@@ -76,7 +85,7 @@ try{
 }
 ```
 
-### Nova Transferência ###
+### Realizar Transferência ###
 
 As transferências através da API do BanPay só podem ser realizadas a partir da conta de origem do token informado.
 
