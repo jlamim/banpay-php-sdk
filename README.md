@@ -5,7 +5,7 @@
 [![Downloads](https://poser.pugx.org/jlamim/banpay-php-sdk/downloads)](https://packagist.org/packages/jlamim/banpay-php-sdk)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/jlamim/banpay-php-sdk)](https://packagist.org/packages/jlamim/banpay-php-sdk)
 [![GitHub stars](https://img.shields.io/github/stars/jlamim/banpay-php-sdk)](https://packagist.org/packages/jlamim/banpay-php-sdk)
-[![GitHub license](https://img.shields.io/github/license/jlamim/banpay-php-sdk)](https://github.com/jlamim/banpay-php-sdk/blob/develop/license.txt)
+[![GitHub license](https://img.shields.io/github/license/jlamim/banpay-php-sdk)](https://github.com/jlamim/banpay-php-sdk/blob/develop/LICENSE.txt)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jlamim/banpay-php-sdk/pulls)
 <br>
 
@@ -15,11 +15,11 @@ NÃO É uma biblioteca oficial, porém a considero funcional, pois sempre adicio
 
 ## Documentação da API
 
-A documentação oficial da API pode ser encontrada em https://banpay.com.br/api.
+A documentação oficial da API pode ser encontrada em <https://banpay.com.br/api.>
 
 ## Instalação Via Composer
 
-Caso não possua o Composer instalado em sua máquina ou ambiente, você pode seguir as instruções do site oficial do Composer em https://getcomposer.org/doc/00-intro.md.
+Caso não possua o Composer instalado em sua máquina ou ambiente, você pode seguir as instruções do site oficial do Composer em <https://getcomposer.org/doc/00-intro.md.>
 
 Acesse o diretório raiz da sua aplicação pelo terminal e execute o comando a seguir para instalar a biblioteca:
 
@@ -34,7 +34,6 @@ require_once 'vendor/autoload.php';
 ```
 
 ### Consulta a Saldo ###
-
 
 ```php
 use BanPay\Cliente;
