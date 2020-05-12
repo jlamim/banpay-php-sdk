@@ -1,6 +1,6 @@
 <?php
 
-namespace BankOn\Services\Financeiro;
+namespace BanPay\Services\Financeiro;
 
 class Resposta
 {
