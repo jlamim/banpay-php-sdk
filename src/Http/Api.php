@@ -2,6 +2,7 @@
 
 namespace BanPay\Http;
 
+use BanPay\Cliente;
 use GuzzleHttp\Client;
 
 class Api
@@ -13,11 +14,11 @@ class Api
     {
     }
 
-    public static function getGuzzleHttpClient()
+    public static function getGuzzleHttpClient(Cliente $cliente)
     {
 
         $client = new Client([
-            'base_uri' => Endpoint::BASE_URL,
+            'base_uri' => ($cliente->getEnvironment() === 'homologacao') ? Endpoint::HOMOLOGACAO_BASE_URL : Endpoint::PRODUCAO_BASE_URL,
         ]);
 
         return $client;

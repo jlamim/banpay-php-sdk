@@ -31,13 +31,13 @@ class Usuario
 
     public static function getResponse(Cliente $cliente, $email)
     {
-        $api = Api::getGuzzleHttpClient();
+        $api = Api::getGuzzleHttpClient($cliente);
         $response = $api->request(Api::GET, Endpoint::CONSULTA_USUARIO . '/' . $email, [
             'headers' => [
                 'Content-Type' => 'application/json',
                 'chaveAPI'     => $cliente->getToken()
             ],
-            'verify' => false,
+            'verify' => $cliente->getVerifySSL(),
             'http_errors' => false
         ]);
 

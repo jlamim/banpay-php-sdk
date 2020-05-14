@@ -10,6 +10,7 @@ use BanPay\Exceptions\BanPayException;
 class Saldo
 {
     private $usuario;
+    private $email;
     private $saldoDisponivel;
 
     public static function get(Cliente $cliente)
@@ -21,6 +22,7 @@ class Saldo
 
         $saldo = new Saldo;
         $saldo->setUsuario($arr['usuario']);
+        //$saldo->setEmail($arr['email']);
         $saldo->setSaldoDisponivel($arr['saldo']);
 
         return $saldo;
@@ -29,13 +31,13 @@ class Saldo
 
     public static function getResponse(Cliente $cliente)
     {
-        $api = Api::getGuzzleHttpClient();
+        $api = Api::getGuzzleHttpClient($cliente);
         $response = $api->request(Api::GET, Endpoint::CONSULTA_SALDO, [
             'headers' => [
                 'Content-Type' => 'application/json',
                 'chaveAPI'     => $cliente->getToken()
             ],
-            'verify' => false,
+            'verify' => $cliente->getVerifySSL(),
             'http_errors' => false
         ]);
 
@@ -64,6 +66,26 @@ class Saldo
     public function setUsuario($usuario)
     {
         $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of email
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
 
         return $this;
     }

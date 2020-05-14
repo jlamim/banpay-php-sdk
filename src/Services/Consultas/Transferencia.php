@@ -28,7 +28,7 @@ class Transferencia
         $response = self::getResponse($cliente, $codigo);
 
         $arr = \json_decode($response->getBody(), true)['dados'];
-        $status = \json_decode($response->getBody(), true)['status'];
+        $status = \json_decode($response->getBody(), true)['sucesso'];
 
         $transferencia = new Transferencia;
         $transferencia->setStatus($status);
@@ -38,7 +38,7 @@ class Transferencia
         $transferencia->setOrigemUsuario($arr['usuarioOrigem']['apelido']);
         $transferencia->setOrigemNome($arr['usuarioOrigem']['nome']);
         $transferencia->setOrigemEmail($arr['usuarioOrigem']['email']);
-        $transferencia->setDestinoUsuario($arr['usuarioDestino']['usuario']);
+        $transferencia->setDestinoUsuario($arr['usuarioDestino']['apelido']);
         $transferencia->setDestinoNome($arr['usuarioDestino']['nome']);
         $transferencia->setDestinoEmail($arr['usuarioDestino']['email']);
 
@@ -48,13 +48,13 @@ class Transferencia
     public static function getResponse(Cliente $cliente, $codigo)
     {
 
-        $api = Api::getGuzzleHttpClient();
+        $api = Api::getGuzzleHttpClient($cliente);
         $response = $api->request(Api::GET, Endpoint::CONSULTA_TRANSFERENCIA . '/' . $codigo, [
             'headers' => [
                 'Content-Type' => 'application/json',
                 'chaveAPI' => $cliente->getToken()
             ],
-            'verify' => false,
+            'verify' => $cliente->getVerifySSL(),
             'http_errors' => false
         ]);
 

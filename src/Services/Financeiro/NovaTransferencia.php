@@ -33,7 +33,7 @@ class NovaTransferencia
 
     public static function postResponse(Cliente $cliente, Transferencia $transferencia)
     {
-        $api = Api::getGuzzleHttpClient();
+        $api = Api::getGuzzleHttpClient($cliente);
         $response = $api->request(Api::POST, Endpoint::REALIZA_TRANSFERENCIA, [
             'headers' => [
                 'Content-Type'   => 'application/x-www-form-urlencoded',
@@ -43,7 +43,7 @@ class NovaTransferencia
                 'contaDestino' => $transferencia->getContaDestino(),
                 'valor'        => $transferencia->getValor()
             ],
-            'verify' => false,
+            'verify' => $cliente->getVerifySSL(),
             'http_errors' => false
         ]);
 

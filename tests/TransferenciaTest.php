@@ -13,12 +13,17 @@ class TransferenciaTest extends TestCase
     public function testNovaTransferenciaAssertTrue()
     {
         $envToken = \getenv('TOKEN');
+
         $cliente = new Cliente;
         $cliente->setToken($envToken);
+        $cliente->setVerifySSL(false);
+        $cliente->setEnvironment('homologacao');
+
         $transferencia = new Transferencia;
-        $transferencia->setContaDestino('contato@jonathanlamim.com.br');
+        $transferencia->setContaDestino('email@valido.com');
         $transferencia->setValor(1);
         $novaTransferencia = new NovaTransferencia;
+
         $retorno = $novaTransferencia->executar($cliente, $transferencia);
         $this->assertTrue($retorno->getStatus());
     }
@@ -30,7 +35,7 @@ class TransferenciaTest extends TestCase
         $cliente = new Cliente;
         $cliente->setToken($envToken);
         $transferencia = new Transferencia;
-        $transferencia->setContaDestino('test@test.com');
+        $transferencia->setContaDestino('email@invalido.com');
         $transferencia->setValor(1);
         $novaTransferencia = new NovaTransferencia;
         $novaTransferencia->executar($cliente, $transferencia);

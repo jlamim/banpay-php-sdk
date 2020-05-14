@@ -12,9 +12,13 @@ class ConsultaTransferenciaTest extends TestCase
     public function testConsultaTransferenciaAssertTrue()
     {
         $envToken = \getenv('TOKEN');
+
         $cliente = new Cliente;
         $cliente->setToken($envToken);
-        $transferencia = Transferencia::get($cliente, "c12f5a8092995b189104986c70a590eb");
+        $cliente->setVerifySSL(false);
+        $cliente->setEnvironment('homologacao');
+
+        $transferencia = Transferencia::get($cliente, "hash-valido");
 
         $this->assertTrue($transferencia->getStatus());
     }
@@ -22,9 +26,12 @@ class ConsultaTransferenciaTest extends TestCase
     public function testNovaTransferenciaAssertFalseWithException()
     {
         $this->expectException(BanPayException::class);
+
         $envToken = \getenv('TOKEN');
+
         $cliente = new Cliente;
         $cliente->setToken($envToken);
-        Transferencia::get($cliente, "c12f5a8092995b189104986c70a590eb");
+
+        Transferencia::get($cliente, "hash-invalido");
     }
 }
