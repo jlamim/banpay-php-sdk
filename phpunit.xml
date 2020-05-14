@@ -19,7 +19,6 @@
         </whitelist>
     </filter>
     <php>
-        <env name="TOKEN" value="5c2625aeb8b011a8f46e1bb9d8534d4b"/>
-        <env name="SEU_USUARIO" value="Jonathan Lamim"/>
+        <env name="TOKEN" value="SEU_TOKEN"/>
     </php>
 </phpunit>

@@ -147,3 +147,17 @@ try{
 ```
 
 Para verificar a transferência e obter mais detalhes sobre ela você pode utilizar o recurso de "Consulta a Transação" disponível na API e com suporte nessa biblioteca.
+
+## Considerações Finais
+
+### Suporte
+
+[Para reportar um novo bug por favor abra uma Issue no github](https://github.com/jlamim/banpay-php-sdk/issues)
+
+### Licença
+
+Distribuída sobre a licença MIT. Copie, cole, modifique, melhore e compartilhe sem medo ;)
+
+### Créditos
+
+* [Jonathan Lamim - www.jonathanlamim.com.br](https://www.jonathanlamim.com.br)
