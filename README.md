@@ -38,6 +38,8 @@ $cliente->setEnvironment('homologacao');
 
 >Se ao fazer as requisições à API você se deparar com erros relacionados a certificado SSL é sinal de que seu ambiente não está localizando os certificados. Para desativar a verificação do certificado basta utilizar `$cliente->setVerifySSL(false)`.
 
+## Funcionalidadesda API
+
 ### Consulta a Cliente ###
 
 ```php
