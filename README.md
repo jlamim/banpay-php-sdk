@@ -1,6 +1,6 @@
 # BanPay PHP SDK
 
-Essa biblioteca permite você se conectar com a API do BanPay através do seu sistema.
+Essa biblioteca permite você se conectar com a API do BanPay através da sua aplicação em PHP.
 
 NÃO É uma biblioteca oficial, porém a considero funcional, pois sempre adiciono novas funcionalidades conforme a API evolui.
 
