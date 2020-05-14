@@ -1,14 +1,5 @@
 # BanPay PHP SDK
 
-[![Build Status](https://travis-ci.org/jlamim/banpay-php-sdk.svg?branch=master)](https://travis-ci.org/jlamim/banpay-php-sdk)
-[![Coverage Status](https://coveralls.io/repos/github/jlamim/banpay-php-sdk/badge.svg?branch=develop)](https://coveralls.io/github/jlamim/banpay-php-sdk?branch=master)
-[![Downloads](https://poser.pugx.org/jlamim/banpay-php-sdk/downloads)](https://packagist.org/packages/jlamim/banpay-php-sdk)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/jlamim/banpay-php-sdk)](https://packagist.org/packages/jlamim/banpay-php-sdk)
-[![GitHub stars](https://img.shields.io/github/stars/jlamim/banpay-php-sdk)](https://packagist.org/packages/jlamim/banpay-php-sdk)
-[![GitHub license](https://img.shields.io/github/license/jlamim/banpay-php-sdk)](https://github.com/jlamim/banpay-php-sdk/blob/develop/LICENSE.txt)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jlamim/banpay-php-sdk/pulls)
-<br>
-
 Essa biblioteca permite você se conectar com a API do BanPay através do seu sistema.
 
 NÃO É uma biblioteca oficial, porém a considero funcional, pois sempre adiciono novas funcionalidades conforme a API evolui.
@@ -33,6 +24,42 @@ Após instalar, inclua o autoloader em seu projeto:
 require_once 'vendor/autoload.php';
 ```
 
+### Definindo o ambiente
+
+A API do BanPay conta com um ambiente de produção e outro de homologação. Por padrão a biblioteca se conecta ao ambiente de produção e para mudar a conexão para o ambiente de homologação basta utilizar `$cliente->setEnvironment('homologacao')`.
+
+No código seria algo como:
+
+```php
+$cliente = new Cliente;
+$cliente->setToken("TOKEN");
+$cliente->setEnvironment('homologacao');
+```
+
+>Se ao fazer as requisições à API você se deparar com erros relacionados a certificado SSL é sinal de que seu ambiente não está localizando os certificados. Para desativar a verificação do certificado basta utilizar `$cliente->setVerifySSL(false)`.
+
+### Consulta a Cliente ###
+
+```php
+use BanPay\Cliente;
+use BanPay\Services\Consultas\Usuario;
+use BanPay\Exceptions\BanPayException;
+
+$cliente = new Cliente;
+$cliente->setToken("TOKEN");
+
+try{
+    $usuario = Usuario::get($cliente);
+
+    echo $usuario->getNome();
+    echo $usuario->getApelido();
+    echo $usuario->getEmail();
+
+}catch(BanPayException $e){
+    echo $e->getMessage();
+}
+```
+
 ### Consulta a Saldo ###
 
 ```php
@@ -46,8 +73,9 @@ $cliente->setToken("TOKEN");
 try{
     $saldo = Saldo::get($cliente);
 
-    echo $saldo->getSaldoDisponivel();
     echo $saldo->getUsuario();
+    echo $saldo->getEmail();
+    echo $saldo->getSaldoDisponivel();
 
 }catch(BanPayException $e){
     echo $e->getMessage();
@@ -67,17 +95,19 @@ $cliente->setToken("TOKEN");
 $codigo = "xxxxxxxx";
 
 try{
-    $transferencia = Transferencia::get($cliente,$codigo);
+    $transferencia = Transferencia::get($cliente, $codigo);
 
     echo $transferencia->getData();
     echo $transferencia->getValor();
+    echo $transferencia->getOrigem();
     echo $transferencia->getOrigemUsuario();
     echo $transferencia->getOrigemNome();
     echo $transferencia->getOrigemEmail();
     echo $transferencia->getDestinoUsuario();
     echo $transferencia->getDestinoNome();
     echo $transferencia->getDestinoEmail();
-    $transferencia->getDataCarbon();// retorna a data pra ser usada com a biblioteca https://carbon.nesbot.com/
+    // retorna a data pra ser usada com a biblioteca https://carbon.nesbot.com/
+    $transferencia->getDataCarbon();
 
 }catch(BanPayException $e){
     echo $e->getMessage();
@@ -103,10 +133,10 @@ $transferencia->setValor(100.99);
 
 try{
     $novaTransferencia = new NovaTransferencia;
-    $resposta = $novaTransferencia->executar($cliente,$transferencia);
+    $resposta = $novaTransferencia->executar($cliente, $transferencia);
 
-    echo $resposta->getTransacao();
     echo $resposta->getStatus();
+    echo $resposta->getHashTransacao();
     echo $resposta->getMensagem();
 
 }catch(BanPayException $e){
@@ -115,7 +145,3 @@ try{
 ```
 
 Para verificar a transferência e obter mais detalhes sobre ela você pode utilizar o recurso de "Consulta a Transação" disponível na API e com suporte nessa biblioteca.
-
-### Consulta a Cliente ###
-
-EM BREVE!

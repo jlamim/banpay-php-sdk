@@ -22,6 +22,7 @@ class TransferenciaTest extends TestCase
         $transferencia = new Transferencia;
         $transferencia->setContaDestino('email@valido.com');
         $transferencia->setValor(1);
+
         $novaTransferencia = new NovaTransferencia;
 
         $retorno = $novaTransferencia->executar($cliente, $transferencia);
